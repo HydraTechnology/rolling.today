@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rolling.today</title>
+<style>
+    body {
+        background-color: #fff; /* plain white */
+        color: #000; /* black text */
+        font-family: "Courier New", Courier, monospace; /* monospaced like Notepad */
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 40px 20px 100px 20px; /* bottom padding so text doesn't hide behind player */
+        display: flex;
+        justify-content: center; /* center horizontally */
+    }
+
+    .txt-container {
+        max-width: 600px; /* width of the text block */
+        text-align: center; /* center every line like a poem */
+        white-space: pre-wrap; /* preserve line breaks */
+    }
+
+    a {
+        color: #0000ee;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: #551a8b;
+    }
+
+    .playlist {
+        position: fixed; /* fix to bottom of screen */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+        text-align: center;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    audio {
+        width: 90%;
+    }
+</style>
+</head>
+<body>
+
+<div class="txt-container">
+<strong>Rolling Today</strong>
+
+
+
+<strong>You. not me. (9 feb 2026)</strong>
+
+your eyes of glass  
+transparent sight  
+a voided gaze  
+towards the light  
+
+find yourself  
+before another  
+or life will loop  
+an endless fight  
+
+grasp your soul  
+an ancient ruin  
+before you act  
+connect the pieces  
+
+solve the puzzle  
+a wonder ceases  
+
+
+
+<strong>Persisting Perception (10 feb 2026)</strong>
+
+by one, by two, by three, by four  
+i won't be there to shut the door  
+a shallow screach  
+a hollow cry  
+i musn't die by suicide  
+
+a candle lit, its pointing at me  
+a flame of sin awake inside  
+
+but who defines the sin i ask  
+law and order  
+history, past  
+
+brought here without will, i was  
+now bound by morals, sin and task  
+
+liquid truth, forensic fire  
+its cordial thoughts, actions and desire  
+
+by five, by six, by seven, by eight  
+a failed attempt to close the gate  
+
+aligning patterns  
+static shapes  
+but crystal clear  
+no light escapes  
+
+pinpoint stars, like burning gass  
+not the normal tone of grass  
+
+the preaching fingers wrap around me  
+a wave of pure dispair upon me  
+a soul with nothing left inside me  
+
+by nine, by ten, by thought, by timing  
+a resting baby softly crying  
+
+the ancious mind that never rests  
+vision full, a thousand pests  
+
+</div>
+
+<!-- Playlist Section -->
+<div class="playlist">
+    <audio id="audioPlayer" controls>
+        <source src="https://files.catbox.moe/33n9wo.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
+<script>
+    // Playlist array
+    const songs = [
+        "https://r2.e-z.host/5b1448e0-8703-4d27-a33a-d8471d9c4b7a/5zmnju6d.mp3",
+	"https://r2.e-z.host/5b1448e0-8703-4d27-a33a-d8471d9c4b7a/ztzycr7b.mp3",
+	"https://r2.e-z.host/5b1448e0-8703-4d27-a33a-d8471d9c4b7a/d5xf4cue.mp3"
+        // Add more song URLs here
+    ];
+
+    let currentSong = 0;
+    const player = document.getElementById('audioPlayer');
+
+    function playSong(index) {
+        currentSong = index;
+        player.src = songs[currentSong];
+        player.play();
+    }
+
+    // Automatically go to next song when one ends
+    player.addEventListener('ended', () => {
+        currentSong = (currentSong + 1) % songs.length;
+        playSong(currentSong);
+    });
+
+    // Start playing the first song automatically
+    playSong(currentSong);
+</script>
+
+</body>
+</html>
